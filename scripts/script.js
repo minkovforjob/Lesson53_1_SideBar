@@ -5,12 +5,16 @@
 // чтобы при клике на любой пункт меню снизу появились 
 // еще два - три подраздела
 
+
+
+
+
 const navMenu = document.querySelector(".navMenu");
 const openNavMenuBtn = document.querySelector("#openButton");
 const closeNavMenuBtn = document.querySelector("#closeButton");
 const navMenuItem = document.querySelectorAll(".navMenuItem");
 
-const toggleMenu = (event) => {
+const toggleMenu = () => {
     navMenu.classList.toggle("navMenuOpen");
 
 }
@@ -25,10 +29,15 @@ closeNavMenuBtn.addEventListener("click", (event) => {
 });
 
 navMenuItem.forEach((item) => {
-    item.addEventListener("click", () => {
-        const submenu = item.querySelector(".submenu");
-        if (submenu) {
-            submenu.classList.toggle("open");
-        }
+    const title = item.querySelector(".navMenuItem0");
+    const submenu = item.querySelector(".submenu");
+    //вешаем обработку только на пункт меню, чтобы подменю не срабатывало
+    title.addEventListener("click", () => {
+        // if (submenu) {
+        submenu.classList.toggle("open");
+        // }
     });
 });
+
+
+
